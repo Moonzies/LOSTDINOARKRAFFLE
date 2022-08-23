@@ -44,6 +44,27 @@ const prodWhitelist = new Map<string, RaffleMetaData>([
       overviewImageUri: '/resources/aartist-raffle-overview.gif',
     },
   ],
+  [
+    'BkfzyRveM4hFtgh93T9qPMAt8kS8xbA8knATaTurNYVf',
+    {
+      name: '3 Prizes Test',
+      overviewImageUri: '/resources/aartist-raffle-overview.gif',
+    },
+  ],
+  [
+    'BkfzyRveM4hFtgh93T9qPMAt8kS8xbA8knATaTurNYVf',
+    {
+      name: '3 Prizes Test',
+      overviewImageUri: '/resources/aartist-raffle-overview.gif',
+    },
+  ],
+  [
+    '9BtoNqpyqF7Sippz5uwUCCgZCoJ7Pv2Z1GdhUi3edDaT',
+    {
+      name: 'Oliver is King',
+      overviewImageUri: '/resources/aartist-raffle-overview.gif',
+    },
+  ],
 
 ]);
 
