@@ -109,26 +109,6 @@ const RaffleInfoSection: FC<RaffleInfoSectionProps> = ({
               </CountUp>
             </div>
           </div>
-          {userTickets?.length && (
-            <div className={classes.showMyTickets}>
-              <Button
-                variant="text"
-                size="small"
-                disableRipple
-                onClick={() => {
-                  setOpen(true);
-                }}
-                className={classes.ticketButton}
-              >
-                See my tickets
-              </Button>
-              <UserTicketsDialog
-                userTickets={userTickets}
-                open={open}
-                setOpen={setOpen}
-              />
-            </div>
-          )}
         </div>
       )}
     </div>

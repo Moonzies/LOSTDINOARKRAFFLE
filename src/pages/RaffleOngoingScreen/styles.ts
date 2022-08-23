@@ -52,7 +52,7 @@ export const useStyles = makeStyles<Theme, { device: DeviceType }>(
       width: '10%',
     },
     backButton: {
-      color: theme.palette.common.black,
+      color: theme.palette.common.white,
       backgroundColor: alpha(theme.palette.secondary.main, 0.8),
       '&:hover': {
         boxShadow: `0px 0px 5px ${theme.palette.secondary.main}, inset 0px 0px 5px ${theme.palette.secondary.main}`,
