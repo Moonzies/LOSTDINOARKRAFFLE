@@ -88,7 +88,7 @@ const RaffleInfoSection: FC<RaffleInfoSectionProps> = ({
           </Typography>
         </div>
       </div>
-      {raffle.entrantsCap && userConnected && (
+      {raffle.entrantsCap > 0 && userConnected && (
         <div className={classes.ticketsSection}>
           <div className={classes.myTickets}>
             <Typography variant="overline" className={classes.label}>
