@@ -89,7 +89,7 @@ const RaffleInfoSection: FC<RaffleInfoSectionProps> = ({
         </div>
       </div>
       {userConnected && (
-        <div className={classes.ticketsSection} display={raffle.entrantsCap > 0 ? "inline" : "none"}>>
+        <div className={classes.ticketsSection} display={raffle.entrantsCap > 0 ? "inline" : "none"}>
           <div className={classes.myTickets}>
             <Typography variant="overline" className={classes.label}>
               My tickets
