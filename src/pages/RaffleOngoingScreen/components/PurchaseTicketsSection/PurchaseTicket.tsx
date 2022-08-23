@@ -399,6 +399,7 @@ export const PurchaseTickets: FC<PurchaseTicketsProps> = ({
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <Typography variant="h4">
