@@ -8,9 +8,6 @@ export const useStyles = makeStyles<Theme, { device: DeviceType }>(
       display: 'flex',
       flexGrow: 'initial',
       width: '100%',
-      padding: "20px",
-      backgroundColor: "#000F0F8A",
-      borderRadius: "20px",
     },
     titleBar: ({ device }) => ({
       marginBottom: device === DeviceType.Phone ? '20px' : '50px',
