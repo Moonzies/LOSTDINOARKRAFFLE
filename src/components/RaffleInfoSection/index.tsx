@@ -59,22 +59,28 @@ const RaffleInfoSection: FC<RaffleInfoSectionProps> = ({
           <Typography variant="overline" className={classes.label}>
             Tickets sold
           </Typography>
-          <div className={classes.value}>
-            <CountUp
-              start={0}
-              end={raffle.totalTickets}
-              delay={0}
-              duration={0.8}
-              preserveValue
-              useEasing
-            >
-              {({ countUpRef }) => <Typography variant="h4" ref={countUpRef} />}
-            </CountUp>
-            <Typography variant="h4" className={classes.separator}>
-              /
+          {raffle.entrantsCap > 0 ? (
+            <div className={classes.value}>
+              <CountUp
+                start={0}
+                end={raffle.totalTickets}
+                delay={0}
+                duration={0.8}
+                preserveValue
+                useEasing
+              >
+                {({ countUpRef }) => <Typography variant="h4" ref={countUpRef} />}
+              </CountUp>
+              <Typography variant="h4" className={classes.separator}>
+                /
+              </Typography>
+              <Typography variant="h4">{`${raffle.entrantsCap}`}</Typography>
+            </div>
+          ) : (
+            <Typography variant="h4">
+              SOLD OUT
             </Typography>
-            <Typography variant="h4">{`${raffle.entrantsCap}`}</Typography>
-          </div>
+          )}
         </div>
         <div className={classes.ticketPrice}>
           <Typography variant="overline" className={classes.label}>

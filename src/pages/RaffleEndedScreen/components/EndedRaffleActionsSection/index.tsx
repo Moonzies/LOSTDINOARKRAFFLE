@@ -71,7 +71,7 @@ const EndedRaffleActionSection: FC<EndedRaffleActionsSectionProps> = ({
   if (!userHasParticipated)
     return (
       <Typography variant="body1">
-        Not participated.
+        Raffle Ended.
       </Typography>
     );
 
