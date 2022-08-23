@@ -76,6 +76,10 @@ export const useStyles = makeStyles<Theme, { device: DeviceType }>(
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'flex-end',
+      marginTop: "40px",
+      padding: "20px",
+      backgroundColor: "#000F0F8A",
+      borderRadius: "20px",
     },
     prizesSection: {
       width: '70%',
