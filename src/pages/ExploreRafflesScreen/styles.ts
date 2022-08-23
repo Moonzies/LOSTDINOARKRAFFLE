@@ -7,7 +7,10 @@ export const useStyles = makeStyles<Theme, { device: DeviceType }>(
     rafflesGrid: {
       display: 'flex',
       flexGrow: 'initial',
-      width: '100%',
+      width: 'auto',
+      padding: "20px",
+      backgroundColor: "#000F0F8A",
+      borderRadius: "20px"
     },
     titleBar: ({ device }) => ({
       marginBottom: device === DeviceType.Phone ? '20px' : '50px',
@@ -18,7 +21,7 @@ export const useStyles = makeStyles<Theme, { device: DeviceType }>(
     },
     raffleCardContainer: ({ device }) => ({
       margin:
-        device === DeviceType.Phone ? '0 10px 0px 10px' : '0 40px 0px 40px',
+        device === DeviceType.Phone ? '0 10px 0px 10px' : '0 20px 0px 20px',
     }),
   })
 );
