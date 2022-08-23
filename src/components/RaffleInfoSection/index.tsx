@@ -88,30 +88,28 @@ const RaffleInfoSection: FC<RaffleInfoSectionProps> = ({
           </Typography>
         </div>
       </div>
-      {userConnected && (
-        raffle.entrantsCap && (
-          <div className={classes.ticketsSection}>
-            <div className={classes.myTickets}>
-              <Typography variant="overline" className={classes.label}>
-                My tickets
-              </Typography>
-              <div className={classes.value}>
-                <CountUp
-                  start={0}
-                  end={userTickets?.length ?? 0}
-                  delay={0}
-                  duration={0.8}
-                  preserveValue
-                  useEasing
-                >
-                  {({ countUpRef }) => (
-                    <Typography variant="h4" ref={countUpRef} />
-                  )}
-                </CountUp>
-              </div>
+      {userConnected && raffle.entrantsCap ? (
+        <div className={classes.ticketsSection}>
+          <div className={classes.myTickets}>
+            <Typography variant="overline" className={classes.label}>
+              My tickets
+            </Typography>
+            <div className={classes.value}>
+              <CountUp
+                start={0}
+                end={userTickets?.length ?? 0}
+                delay={0}
+                duration={0.8}
+                preserveValue
+                useEasing
+              >
+                {({ countUpRef }) => (
+                  <Typography variant="h4" ref={countUpRef} />
+                )}
+              </CountUp>
             </div>
           </div>
-        ) <div></div>
+        </div>
       )}
     </div>
   );
