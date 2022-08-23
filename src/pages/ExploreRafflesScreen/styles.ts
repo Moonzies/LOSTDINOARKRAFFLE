@@ -21,7 +21,7 @@ export const useStyles = makeStyles<Theme, { device: DeviceType }>(
     },
     raffleCardContainer: ({ device }) => ({
       margin:
-        device === DeviceType.Phone ? '0 10px 0px 10px' : '0 20px 0px 20px',
+        device === DeviceType.Phone ? '0 10px 0px 10px' : '0 10px 0px 10px',
     }),
   })
 );

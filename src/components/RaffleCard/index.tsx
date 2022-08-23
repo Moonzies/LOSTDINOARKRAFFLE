@@ -97,7 +97,7 @@ const RaffleCard: FC<RaffleCardProps> = ({
             <div className={classes.label}>
               <span className={classes.cardLabel}>Tickets sold</span>
             </div>
-            {raffle.totalTickets}
+            {raffle.totalTickets != 0 ? raffle.totalTickets : "SOLD OUT"}
           </div>
           <div className={classes.endingIn}>
             <div className={classes.label}>
