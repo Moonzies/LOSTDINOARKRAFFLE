@@ -111,7 +111,7 @@ const RaffleInfoSection: FC<RaffleInfoSectionProps> = ({
               </div>
             </div>
           </div>
-        )
+        ) <div></div>
       )}
     </div>
   );
