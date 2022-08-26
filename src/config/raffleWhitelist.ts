@@ -31,10 +31,10 @@ const testWhitelist = new Map<string, RaffleMetaData>([
 
 const prodWhitelist = new Map<string, RaffleMetaData>([
   [
-    '9b6G6hWQvrmKwjgMXG3hhLduBzsnb4z4Qv3',
+    'GBRZyFu9eaJTbuXARHVJuobLvHau5R6UZSok6SNRGJKS',
     {
-      name: 'Updated soon',
-      overviewImageUri: '/resources/001-mainnet-launch.gif',
+      name: 'SolFennex NFT + Crystal NFT',
+      overviewImageUri: '/resources/SolFennex.jpg',
     },
   ],
 
