@@ -65,7 +65,7 @@ const RaffleInfoSection: FC<RaffleInfoSectionProps> = ({
                 start={0}
                 end={raffle.totalTickets}
                 delay={0}
-                duration={0.8}
+                duration={2.0}
                 preserveValue
                 useEasing
               >
