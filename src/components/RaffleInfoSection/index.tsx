@@ -71,10 +71,6 @@ const RaffleInfoSection: FC<RaffleInfoSectionProps> = ({
               >
                 {({ countUpRef }) => <Typography variant="h4" ref={countUpRef} />}
               </CountUp>
-              <Typography variant="h4" className={classes.separator}>
-                /
-              </Typography>
-              <Typography variant="h4">{`${raffle.entrantsCap}`}</Typography>
             </div>
           ) : (
             <Typography variant="h4">
