@@ -64,7 +64,7 @@ const RaffleInfoSection: FC<RaffleInfoSectionProps> = ({
               <CountUp
                 start={0}
                 end={raffle.totalTickets}
-                delay={0.7}
+                delay={0}
                 duration={3.0}
                 preserveValue
                 useEasing
