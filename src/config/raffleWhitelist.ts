@@ -45,7 +45,6 @@ const prodWhitelist = new Map<string, RaffleMetaData>([
     },
   ],
 
-
 ]);
 
 export const RAFFLES_WHITELIST = TESTING
