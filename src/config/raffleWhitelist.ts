@@ -41,7 +41,7 @@ const prodWhitelist = new Map<string, RaffleMetaData>([
     'HaGC63ThMjXKvmmug74aMzq4wJ9DZBjP35DccerHm9Bz',
     {
       name: 'Battle For Nippon NFT',
-      overviewImageUri: '/resources/nippon.png',
+      overviewImageUri: '/resources/nippon.jpg',
     },
   ],
 
