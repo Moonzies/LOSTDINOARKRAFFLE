@@ -33,18 +33,24 @@ const prodWhitelist = new Map<string, RaffleMetaData>([
   [
     'GBRZyFu9eaJTbuXARHVJuobLvHau5R6UZSok6SNRGJKS',
     {
-      name: 'SolFennex NFT + Crystal NFT',
+      name: 'SOLFENNEX NFT',
       overviewImageUri: '/resources/SolFennex.jpg',
     },
   ],
   [
     'HaGC63ThMjXKvmmug74aMzq4wJ9DZBjP35DccerHm9Bz',
     {
-      name: 'Battle For Nippon NFT',
+      name: 'BFN NFT',
       overviewImageUri: '/resources/nippon.jpg',
     },
   ],
-
+  [
+    'AcYYWxfGaPCfjBrcKEMm3UuQnm4qCuZAeJRRPXsX8Fou',
+    {
+      name: 'Weedhead NFT',
+      overviewImageUri: '/resources/weedhead.jpg',
+    },
+  ],
 ]);
 
 export const RAFFLES_WHITELIST = TESTING
