@@ -47,10 +47,20 @@ const prodWhitelist = new Map<string, RaffleMetaData>([
   [
     'AcYYWxfGaPCfjBrcKEMm3UuQnm4qCuZAeJRRPXsX8Fou',
     {
-      name: 'Weedhead NFT',
+      name: 'WEEDHEAD NFT',
       overviewImageUri: '/resources/weedhead.jpg',
     },
   ],
+  [
+    'ST3Z9u3jcP7pmBPtLBMZ31krjhvmwLn5ozUKhoZtx4q',
+    {
+      name: 'CIF NFT',
+      overviewImageUri: '/resources/cryptoIdolz.jpg',
+    },
+  ],
+
+
+
 ]);
 
 export const RAFFLES_WHITELIST = TESTING
