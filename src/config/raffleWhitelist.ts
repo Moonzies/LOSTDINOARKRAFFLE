@@ -68,7 +68,7 @@ const prodWhitelist = new Map<string, RaffleMetaData>([
   [
     'H8AkfzUjyZVmmNTA3zZayYP7xY6CVR79eLVnYuZ44XyU',
     {
-      name: 'OG MooBaa NFT',
+      name: 'ACD NFT',
       overviewImageUri: '/resources/acd.png',
     },
   ],
