@@ -65,6 +65,14 @@ const prodWhitelist = new Map<string, RaffleMetaData>([
       overviewImageUri: '/resources/acd.jpg',
     },
   ],
+  [
+    '5is2rA61oWqGyrGeoSZ5frd3RafyRrgZBrM2boLjJkQW',
+    {
+      name: 'OG MooBaa NFT',
+      overviewImageUri: '/resources/mooBaa.jpg',
+    },
+  ],
+
   
   
 ]);
