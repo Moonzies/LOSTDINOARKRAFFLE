@@ -71,7 +71,7 @@ const prodWhitelist = new Map<string, RaffleMetaData>([
       name: 'ACD NFT',
       overviewImageUri: '/resources/acd.jpg',
     },
-  ],
+  ]
   
   
 ]);
