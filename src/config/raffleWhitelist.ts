@@ -65,7 +65,13 @@ const prodWhitelist = new Map<string, RaffleMetaData>([
       overviewImageUri: '/resources/mooBaa.jpg',
     },
   ],
-
+  [
+    'G634V1zAi1N2UQFVecwzGhddPcs7rBSEnM1HUVMFhqVx',
+    {
+      name: 'ACD NFT',
+      overviewImageUri: '/resources/acd2.jpg',
+    },
+  ],
   
   
 ]);
