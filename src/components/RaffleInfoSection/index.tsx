@@ -65,7 +65,7 @@ const RaffleInfoSection: FC<RaffleInfoSectionProps> = ({
   return (
     <div className={classes.ticketContainerMobile}>
           
-        <div className={classes.ticketsSectionMobile}
+        <div className={classes.ticketsSectionMobile} 
         onClick={() => {
           var win = window.open(
             `https://solscan.io/token/${prize.mint.publicKey.toString()}`,

@@ -146,6 +146,7 @@ export const useStyles = makeStyles<Theme, { device: DeviceType }>(
     }),
     actionSectionContainer: {
       padding: '20px 0 20px 0',
+      marginTop: '72px',
     },
     actionSectionInner: {
       padding: '10px 0',
