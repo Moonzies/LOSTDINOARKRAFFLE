@@ -11,7 +11,7 @@ export interface CountdownProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Countdown: FC<CountdownProps> = ({
   endTimestamp,
-  spacing = '0px',
+  spacing = '5px',
   className,
   ...otherProps
 }) => {
@@ -35,10 +35,11 @@ export const Countdown: FC<CountdownProps> = ({
     return () => clearInterval(timerId);
   }, [setNow]);
 
+
   return !animationEnded ? (
     <div className={`${classes.root} ${className}`} {...otherProps}>
-      <div style={{ marginRight: spacing }}>
-        <CountUp
+      <div style={{ }}>
+        <CountUp style={{marginRight: "3px"}}
           start={0}
           end={days}
           delay={0}
@@ -50,8 +51,8 @@ export const Countdown: FC<CountdownProps> = ({
           {({ countUpRef: daysRef }) => <span ref={daysRef} />}
         </CountUp>
       </div>
-      :
-      <div style={{ marginRight: spacing, marginLeft: spacing }}>
+      d
+      <div style={{marginRight: "3px", marginLeft: "6px" }}>
         <CountUp
           start={0}
           end={hours}
@@ -70,8 +71,8 @@ export const Countdown: FC<CountdownProps> = ({
           {({ countUpRef: hoursRef }) => <span ref={hoursRef} />}
         </CountUp>
       </div>
-      :
-      <div style={{ marginRight: spacing, marginLeft: spacing }}>
+      h
+      <div style={{ marginRight: "3px", marginLeft: "6px"  }}>
         <CountUp
           start={0}
           end={minutes}
@@ -90,8 +91,8 @@ export const Countdown: FC<CountdownProps> = ({
           {({ countUpRef: minutesRef }) => <span ref={minutesRef} />}
         </CountUp>
       </div>
-      :
-      <div style={{ marginLeft: spacing }}>
+      m
+      <div style={{ marginRight: "3px", marginLeft: "6px"  }}>
         <CountUp
           start={0}
           end={seconds}
@@ -110,30 +111,34 @@ export const Countdown: FC<CountdownProps> = ({
           {({ countUpRef: secondsRef }) => <span ref={secondsRef} />}
         </CountUp>
       </div>
+      s
     </div>
   ) : (
     <div className={`${classes.root} ${className}`} {...otherProps}>
-      <span style={{ marginRight: spacing }}>{days}</span>:
-      <span style={{ marginRight: spacing, marginLeft: spacing }}>
+      <span style={{  marginRight: "3px"}}>{days}</span>
+      d
+      <span style={{ marginRight: "3px", marginLeft: "6px"  }}>
         {hours.toLocaleString('en-US', {
           minimumIntegerDigits: 2,
           useGrouping: false,
         })}
       </span>
-      :
-      <span style={{ marginRight: spacing, marginLeft: spacing }}>
+      h
+      <span style={{ marginRight: "3px", marginLeft: "6px"  }}>
         {minutes.toLocaleString('en-US', {
           minimumIntegerDigits: 2,
           useGrouping: false,
         })}
       </span>
-      :
-      <span style={{ marginLeft: spacing }}>
+      m
+      <span style={{ marginRight: "3px", marginLeft: "6px"  }}>
         {seconds.toLocaleString('en-US', {
           minimumIntegerDigits: 2,
           useGrouping: false,
         })}
       </span>
+      s
+      
     </div>
   );
 };

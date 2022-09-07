@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(76, 187, 221);
 }
 
 .App-link {
@@ -43,3 +43,15 @@
 }
 
 
+*, ::before, ::after {
+  box-sizing: unset!important;
+  max-width: 20000px!important
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  background-image: url("https://cdn.discordapp.com/attachments/241232921183125505/1014546660061356132/Untitled-9.png");
+  background-repeat: repeat-y;
+  background-size:cover;
+}
