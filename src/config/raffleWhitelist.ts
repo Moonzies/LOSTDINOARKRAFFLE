@@ -72,7 +72,13 @@ const prodWhitelist = new Map<string, RaffleMetaData>([
       overviewImageUri: '/resources/acd2.jpg',
     },
   ],
-  
+  [
+    '9EsdPsm5qbXqkujzGwarPQwSFqikGeYsWHFz2s1pqRvM',
+    {
+      name: 'GEEXOLOTLS FMT',
+      overviewImageUri: '/resources/cute.jpg',
+    },
+  ],
   
 ]);
 
