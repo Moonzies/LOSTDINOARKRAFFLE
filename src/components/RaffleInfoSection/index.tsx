@@ -5,9 +5,6 @@ import {
   DialogProps,
   DialogTitle,
   Typography,
-  CardMedia,
-  CardActions,
-  Card,
 } from '@material-ui/core';
 import { FC, useState } from 'react';
 import CountUp from 'react-countup';
@@ -17,8 +14,6 @@ import { Raffle } from '../../lib/types';
 import useCommonStyles from '../../assets/styles';
 import { useStyles } from './styles';
 import { useViewport } from '../../hooks/useViewport';
-import Countdown from '../Countdown';
-import { classicNameResolver } from 'typescript';
 
 type UserTicketsDialogProps = DialogProps & {
   setOpen: (isOpen: boolean) => void;
@@ -56,67 +51,86 @@ const RaffleInfoSection: FC<RaffleInfoSectionProps> = ({
   const { device } = useViewport();
   const classes = { ...useCommonStyles(), ...(useStyles({ device }) as any) };
   const [open, setOpen] = useState(false);
-  const prize = raffle.prizes[0];
-  const imageUrl =
-    raffle.metadata.overviewImageUri
-      ? raffle.metadata.overviewImageUri
-      : prize.meta.imageUri;
 
   return (
-    <div className={classes.ticketContainerMobile}>
-          
-        <div className={classes.ticketsSectionMobile} 
-        onClick={() => {
-          var win = window.open(
-            `https://solscan.io/token/${prize.mint.publicKey.toString()}`,
-            '_blank'
-          );
-          win?.focus();
-        }}>
-          <CardMedia
-            component="img"
-            className={classes.media}
-            src={imageUrl}
-          /> 
-          
-          <CardActions className={classes.raffleInfo}>
-            <div className={classes.detailsRow1}>
-              {raffle.metadata.name}
-            </div>
-
-            <div className={classes.detailsRow2}>
-              <div className={classes.ticketPrice}>
-                <div className={classes.label}>
-                  <span className={classes.cardLabel}>PRICE</span>
-                </div>
-                <div>
-                  {getDisplayAmount(
-                    raffle.proceeds.ticketPrice,
-                    raffle.proceeds.mint
-                  )}{' '}
-                  {raffle.proceeds.mint.symbol}
-                </div>
-              </div>
-              <div className={classes.ticketsSold}>
-                <div className={classes.label}>
-                  <span className={classes.cardLabel}>TICKETS SOLD</span>
-                </div>
-                <div>
-                {raffle.totalTickets != 0 ? raffle.totalTickets : "SOLD OUT"}
-                </div>
-              </div>
-            </div>
-
-            <div className={classes.detailsRow3}>
-              <div className={classes.endingIn}>
-                <div className={classes.label}>
-                  <span className={classes.cardLabel}>TIME</span>
-                </div>
-                  <Countdown endTimestamp={raffle.endTimestamp} />
-              </div>
-            </div>
-          </CardActions>
+    <div className={classes.root}>
+      <div className={classes.ticketsSection}>
+        <div className={classes.totalTickets}>
+          <Typography variant="overline" className={classes.label}>
+            Tickets sold
+          </Typography>
+          <div className={classes.value}>
+            <CountUp
+              start={0}
+              end={raffle.totalTickets}
+              delay={0}
+              duration={0.8}
+              preserveValue
+              useEasing
+            >
+              {({ countUpRef }) => <Typography variant="h4" ref={countUpRef} />}
+            </CountUp>
+            <Typography variant="h4" className={classes.separator}>
+              /
+            </Typography>
+            <Typography variant="h4">{`${raffle.entrantsCap}`}</Typography>
+          </div>
         </div>
+        <div className={classes.ticketPrice}>
+          <Typography variant="overline" className={classes.label}>
+            Ticket Price
+          </Typography>
+          <Typography variant="h4">
+            {`${getDisplayAmount(
+              raffle.proceeds.ticketPrice,
+              raffle.proceeds.mint
+            )} ${raffle.proceeds.mint.symbol}`}
+          </Typography>
+        </div>
+      </div>
+      {userConnected && (
+        <div className={classes.ticketsSection}>
+          <div className={classes.myTickets}>
+            <Typography variant="overline" className={classes.label}>
+              My tickets
+            </Typography>
+            <div className={classes.value}>
+              <CountUp
+                start={0}
+                end={userTickets?.length ?? 0}
+                delay={0}
+                duration={0.8}
+                preserveValue
+                useEasing
+              >
+                {({ countUpRef }) => (
+                  <Typography variant="h4" ref={countUpRef} />
+                )}
+              </CountUp>
+            </div>
+          </div>
+          {userTickets?.length && (
+            <div className={classes.showMyTickets}>
+              <Button
+                variant="text"
+                size="small"
+                disableRipple
+                onClick={() => {
+                  setOpen(true);
+                }}
+                className={classes.ticketButton}
+              >
+                See my tickets
+              </Button>
+              <UserTicketsDialog
+                userTickets={userTickets}
+                open={open}
+                setOpen={setOpen}
+              />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

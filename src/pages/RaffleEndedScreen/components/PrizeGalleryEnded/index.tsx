@@ -49,14 +49,14 @@ const PrizeGalleryEnded: FC<PrizeGalleryEndedProps> = ({
 
           return (
             <Grid key={prizeIndex} item className={classes.prizeItem}>
-              {/*<PrizeCardEnded
+              <PrizeCardEnded
                 key={prizeIndex}
                 prize={prize}
                 raffle={raffle}
                 {...(prize.amount.isZero() ? { badgeText: 'Claimed' } : {})}
                 index={prizeIndex}
                 winner={ticketIndex}
-              />*/}
+              />
               {isWon && (
                 <div className={classes.claimButtonContainer}>
                   <ClaimButton

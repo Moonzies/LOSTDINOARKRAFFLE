@@ -37,7 +37,7 @@ const ClaimButton: FC<ClaimButtonProps> = ({
           setClaimOngoing((state) => cloneDeep(state.set(prizeIndex, false)));
         }}
         disabled={prize.amount.isZero() || !!claimOngoing.get(prizeIndex)}
-        className={classes.claimButton}
+        className={classes.mainButton}
       >
         <div className={classes.claimButtonContent}>
           {!!claimOngoing.get(prizeIndex) ? (
@@ -46,7 +46,7 @@ const ClaimButton: FC<ClaimButtonProps> = ({
                 <CircularProgress size={20} className={classes.claimSpinner} />
               </div>
               <div className={classes.claimButtonContentMiddle}>
-                ...
+                Processing...
               </div>
               <div className={classes.claimButtonContentRight} />
             </>

@@ -42,6 +42,9 @@ const ExploreRafflesScreen: FC = () => {
   if (raffles.size === 0 && fetching)
     return (
       <>
+        <Typography variant="h1" className={classes.titleBar}>
+          Lost Dino Ark Raffles
+        </Typography>
         <div className={classes.mainContent}>
           <CircularProgress color="secondary" />
         </div>
@@ -51,14 +54,20 @@ const ExploreRafflesScreen: FC = () => {
   if (raffles.size === 0)
     return (
       <>
+        <Typography variant="h1" className={classes.titleBar}>
+        Lost Dino Ark Raffles
+        </Typography>
         <Typography variant="h4" className={classes.mainContent}>
-         Server overload... Try again in a few minutes.
+         Raffles will be coming soon!
         </Typography>
       </>
     );
 
   return (
     <>
+      <Typography variant="h1" className={classes.titleBar}>
+      Lost Dino Ark Raffles
+      </Typography>
       <FilterBar
         hideEndedRaffles={hideEndedRaffles}
         setHideEndedRaffles={setHideEndedRaffles}

@@ -58,12 +58,12 @@ const EndedRaffleActionSection: FC<EndedRaffleActionsSectionProps> = ({
           Winners have been announced.
         </Typography>
         <Typography variant="body1">
-          Connect your wallet to see if you won!
+          Connect your wallet to check if you have won!
         </Typography>
         <WalletMultiButton
           className={`${classes.mainButton} ${classes.connectToBuyButton}`}
         >
-          Connect
+          Connect to reveal
         </WalletMultiButton>
       </>
     );
@@ -71,7 +71,7 @@ const EndedRaffleActionSection: FC<EndedRaffleActionsSectionProps> = ({
   if (!userHasParticipated)
     return (
       <Typography variant="body1">
-        Raffle Ended.
+        Not participated.
       </Typography>
     );
 
@@ -92,7 +92,19 @@ const EndedRaffleActionSection: FC<EndedRaffleActionsSectionProps> = ({
       </Typography>
       <div>
         <Typography>
-          Claim your prize!
+          <Button
+            className={classes.scrollLink}
+            variant="text"
+            onClick={() =>
+              scrollRef.current?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              })
+            }
+          >
+            Scroll
+          </Button>
+          to see your prize(s)!
         </Typography>
       </div>
     </div>

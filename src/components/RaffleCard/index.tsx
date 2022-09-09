@@ -51,19 +51,19 @@ const RaffleCard: FC<RaffleCardProps> = ({
       : prize.meta.imageUri;
 
   return (
-    <Card style={!isEnded ? {filter: "grayscale(100%)"} : {backgroundColor: "white"}}
+    <Card
       onClick={() => {
         push(`${routes.RAFFLES}/${raffle.publicKey}`);
       }}
       className={`${classes.root} ${className}`}
       {...otherProps}
     >
-      {/*<div className={classes.cardPrizesBadge}>
-        {raffle.prizes.length} WINNER{raffle.prizes.length > 1 && 'S'}
+      <div className={classes.cardPrizesBadge}>
+        {raffle.prizes.length} prize{raffle.prizes.length > 1 && 's'}
       </div>
       {new Date() > raffle.endTimestamp && (
         <div className={classes.cardEndedBadge}>Ended</div>
-      )}*/}
+      )}
       {!isLoaded && (
         <Skeleton
           variant="rect"
@@ -78,45 +78,49 @@ const RaffleCard: FC<RaffleCardProps> = ({
         className={classes.media}
         src={imageUrl}
         alt={prize.mint.name}
-        style={isLoaded ? (raffle.totalTickets == 0 ? {} : {}) : { display: 'none' }}
+        style={isLoaded ? {} : { display: 'none' }}
         onLoad={() => setIsLoaded(true)}
       />
 
-      <CardActions className={classes.raffleInfo} style={isEnded ? {} : {background: "linear-gradient(300deg, rgba(255, 252, 203, 0.8)00%, rgba(255,0,0,0) 20%,rgba(251, 245, 216, 0.8)30%,rgba(232, 225, 225, 0)50%,rgba(255, 243, 176, 0.8)80%), darkkhaki!important"}}>
+      <CardActions className={classes.raffleInfo}>
         <div className={classes.detailsRow1}>
-          {
+          {raffle.metadata.name.length > MAX_TITLE_LENGTH ? (
+            <Tooltip title={raffle.metadata.name} placement="top">
+              <div>{raffle.metadata.name.slice(0, MAX_TITLE_LENGTH - 4)} ...</div>
+            </Tooltip>
+          ) : (
             raffle.metadata.name
-          }
+          )}
         </div>
         <div className={classes.detailsRow2}>
-          
-          <div className={classes.ticketPrice}>
-            <div className={classes.label}>
-              <span className={classes.cardLabel}>PRICE</span>
-            </div>
-            <div>
-              {getDisplayAmount(
-                raffle.proceeds.ticketPrice,
-                raffle.proceeds.mint
-              )}{' '}
-              {raffle.proceeds.mint.symbol}
-            </div>
-          </div>
           <div className={classes.ticketsSold}>
             <div className={classes.label}>
-              <span className={classes.cardLabel}>TICKETS SOLD</span>
+              <span className={classes.cardLabel}>Tickets sold</span>
             </div>
-            <div>
-            {raffle.totalTickets != 0 ? raffle.totalTickets : "SOLD OUT"}
+            {raffle.totalTickets}
+          </div>
+          <div className={classes.endingIn}>
+            <div className={classes.label}>
+              <span className={classes.cardLabel}>Ending in</span>
             </div>
+            {isEnded ? <Countdown endTimestamp={raffle.endTimestamp} /> : '-'}
           </div>
         </div>
         <div className={classes.detailsRow3}>
-          <div className={classes.endingIn}>
+          <div className={classes.ticketPrice}>
             <div className={classes.label}>
-              <span className={classes.cardLabel}> {!isEnded ? "TIME" : "TIME"}</span>
+              <span className={classes.cardLabel}>Ticket price</span>
             </div>
-            {isEnded ? <Countdown endTimestamp={raffle.endTimestamp} /> : 'ENDED'}
+            {getDisplayAmount(
+              raffle.proceeds.ticketPrice,
+              raffle.proceeds.mint
+            )}{' '}
+            {raffle.proceeds.mint.symbol}
+          </div>
+          <div>
+            <IconButton className={classes.goToRaffle}>
+              <ArrowForward />
+            </IconButton>
           </div>
         </div>
       </CardActions>

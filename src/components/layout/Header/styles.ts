@@ -7,7 +7,7 @@ export const useStyles = makeStyles<Theme, { device: DeviceType }>(
   (theme: Theme) => ({
     root: ({ device }) => ({
       width: '100%',
-      height: device === DeviceType.Phone ? '50px' : '0px',
+      height: device === DeviceType.Phone ? '50px' : '90px',
     }),
     drawerHeader: () => ({
       width: '100%',
@@ -26,17 +26,13 @@ export const useStyles = makeStyles<Theme, { device: DeviceType }>(
       zIndex: 99,
     }),
     navContainer: {
-      position: "fixed",
-      top: "20px", 
-      right: "20px", 
       display: 'flex',
       alignItems: 'center',
-      zIndex: 888,
+      marginRight: '30px',
     },
     homeButton: () => ({
-      position: "fixed",
+      marginLeft: '30px',
       color: theme.palette.primary.dark,
-      zIndex: 888,
       '&:hover': {
         backgroundColor: 'transparent',
       },
@@ -52,12 +48,9 @@ export const useStyles = makeStyles<Theme, { device: DeviceType }>(
     homeButtonIcon: {
       height: '60px',
       color: theme.palette.primary.main,
-      margin: "-5px",
     },
     walletButtonContainer: {
       marginLeft: '20px',
-      borderRadius: "5px",
-      backgroundColor: "maroon",
     },
     currentLocation: {
       color: 'black',

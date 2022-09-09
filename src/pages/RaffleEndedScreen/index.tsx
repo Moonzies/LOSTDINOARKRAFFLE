@@ -16,7 +16,7 @@ import RaffleInfoSection from '../../components/RaffleInfoSection';
 import PrizeGalleryEnded from './components/PrizeGalleryEnded';
 import { PrizeShowcaseEnded } from './components/PrizeShowcaseEnded';
 import useCommonStyles from '../../assets/styles';
-import { useStyles } from '../RaffleOngoingScreen/styles';
+import { useStyles } from './styles';
 import { useViewport } from '../../hooks/useViewport';
 import { DeviceType } from '../../providers/ViewportProvider';
 
@@ -93,11 +93,11 @@ const RaffleEndedScreen: FC<IRaffleEndedScreenProps> = ({
     <div className={classes.root}>
       {device === DeviceType.Phone ? (
         <>
-          {/** <Typography variant="h1">
+          <Typography variant="h1">
             {`${raffle.metadata.name}`}
             <span className={classes.raffleSubtitle}>[ended]</span>
           </Typography>
-          <div className={classes.spacer} />*/}
+          <div className={classes.spacer} />
           <RaffleInfoSection
             raffle={raffle}
             userConnected={!!draffleClient.provider.wallet.publicKey}
@@ -116,6 +116,7 @@ const RaffleEndedScreen: FC<IRaffleEndedScreenProps> = ({
             </div>
           </div>
           <div className={classes.spacer} />
+          <Typography variant="overline">Results</Typography>
           <PrizeGalleryEnded
             raffle={raffle}
             entrantWinningTickets={entrantWinningTickets}
@@ -127,7 +128,7 @@ const RaffleEndedScreen: FC<IRaffleEndedScreenProps> = ({
         </>
       ) : (
         <>
-          {/*<div className={classes.topSection}>
+          <div className={classes.topSection}>
             <div className={classes.raffleTitle}>
               <div className={classes.leftTitleSection}>
                 <IconButton
@@ -151,9 +152,9 @@ const RaffleEndedScreen: FC<IRaffleEndedScreenProps> = ({
               </div>
               <div className={classes.rightTitleSection}></div>
             </div>
-          </div>*/}
+          </div>
           <div className={classes.mainContent}>
-            {/*<div className={classes.prizesSection}>
+            <div className={classes.prizesSection}>
               <Typography variant="overline">
             
                 {raffle.prizes.length > 3 && (
@@ -179,39 +180,35 @@ const RaffleEndedScreen: FC<IRaffleEndedScreenProps> = ({
                 raffle={raffle}
                 winningTickets={winningTickets}
               />
-            </div>*/}
-            <div className={classes.prizesSection}>
+            </div>
+            <div className={classes.detailsSection}>
               <RaffleInfoSection
                 raffle={raffle}
                 userConnected={!!draffleClient.provider.wallet.publicKey}
                 userTickets={entrant?.tickets}
               />
-            </div>
-            <div className={classes.actionSectionContainer}>
-              <div className={classes.actionSection}>
-                <EndedRaffleActionSection
-                  raffle={raffle}
-                  userPubkey={draffleClient.provider.wallet.publicKey}
-                  entrant={entrant}
-                  entrantWinningTickets={entrantWinningTickets}
-                  scrollRef={prizeGalleryRef}
-                />
+              <div className={classes.actionSectionContainer}>
+                <div className={classes.actionSection}>
+                  <EndedRaffleActionSection
+                    raffle={raffle}
+                    userPubkey={draffleClient.provider.wallet.publicKey}
+                    entrant={entrant}
+                    entrantWinningTickets={entrantWinningTickets}
+                    scrollRef={prizeGalleryRef}
+                  />
+                </div>
               </div>
             </div>
           </div>
-          <div className={classes.claimFlexContainer}>
-            <div className={classes.claimBox}>
-              <PrizeGalleryEnded 
-                raffle={raffle}
-                entrantWinningTickets={entrantWinningTickets}
-                winningTickets={winningTickets}
-                claimPrize={claimPrize}
-                scrollRef={prizeGalleryRef}
-              />
-            </div>
-            <div className={classes.claimBox}>
-
-            </div>
+          <div className={classes.prizeGallerySection}>
+            <DoubleArrow className={classes.scrollIcon} />
+            <PrizeGalleryEnded
+              raffle={raffle}
+              entrantWinningTickets={entrantWinningTickets}
+              winningTickets={winningTickets}
+              claimPrize={claimPrize}
+              scrollRef={prizeGalleryRef}
+            />
           </div>
         </>
       )}

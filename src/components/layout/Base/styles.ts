@@ -4,13 +4,13 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles((theme: Theme) => ({
   background: {
     width: '100vw',
-    height: '0%',
+    height: '100vh',
     backgroundColor: '#1F0800',
-    backgroundImage: 'url(https://cdn.discordapp.com/attachments/933006467106242620/1017777131046051840/BACKGROUND2.jpg)',
+    backgroundImage: 'url(https://cdn.discordapp.com/attachments/241232921183125505/1011248734736228362/background.png)',
     backgroundRepeat: 'repeat-y',
-    backgroundSize: '100%',
-    backgroundPosition: 'center top',
-    position: 'absolute',
+    backgroundSize: 'auto',
+    backgroundPosition: 'left',
+    position: 'fixed',
   },
   content: {
     position: 'absolute',

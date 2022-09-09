@@ -103,6 +103,31 @@ const PrizeCardEnded: FC<PrizeCardEndedProps> = ({
                 />
               </Typography>
             </div>
+            <div className={classes.winnerSection}>
+              {winner !== undefined ? (
+                <div>
+                  <Typography variant="body1">{`Winner: #${String(
+                    winner + 1
+                  ).padStart(4, '0')}`}</Typography>
+                  <div className={classes.winnerRow}>
+                    <Typography variant="body1">Pubkey: </Typography>
+                    <Typography
+                      variant="body1"
+                      className={classes.winnerPubkey}
+                    >
+                      {shortenPubkeyString(raffle.entrantsRaw[winner])}
+                    </Typography>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <Typography variant="body1">Drawing...</Typography>
+                  <Typography variant="body1" className={classes.winnertTicket}>
+                    <RandomTicketDrawer endRange={raffle.totalTickets} />
+                  </Typography>
+                </>
+              )}
+            </div>
           </div>
         </CardActions>
       </Card>
