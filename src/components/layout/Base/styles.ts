@@ -6,7 +6,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
     width: '100vw',
     height: '0%',
     backgroundColor: '#1F0800',
-    backgroundImage: 'url(https://cdn.discordapp.com/attachments/241232921183125505/1013757305659072542/Untitled-5.png)',
+    backgroundImage: 'url(https://cdn.discordapp.com/attachments/933006467106242620/1017777131046051840/BACKGROUND2.jpg)',
     backgroundRepeat: 'repeat-y',
     backgroundSize: '100%',
     backgroundPosition: 'center top',
