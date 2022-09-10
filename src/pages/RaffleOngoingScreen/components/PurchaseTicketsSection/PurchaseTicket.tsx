@@ -45,7 +45,7 @@ import { DispenserRegistryRaw } from '../../../../providers/ProgramApisProvider'
 import { PublicKey } from '@solana/web3.js';
 import ShortenedString from '../../../../components/ShortenedString';
 
-const MAX_TICKET_AMOUNT = 1000;
+const MAX_TICKET_AMOUNT = 100000;
 
 const isLamportsEnough = (lamports: number | undefined) =>
   (lamports ?? 0) >= BUY_TICKETS_TX_FEE_LAMPORTS;
@@ -299,11 +299,28 @@ export const PurchaseTickets: FC<PurchaseTicketsProps> = ({
 
   return (
     <div className={`${classes.actionSection} ${classes.root}`}>
-      <Typography variant="h3" className={classes.titleSection}>
-        Purchase Tickets
-      </Typography>
       <div className={classes.amountLabel}>
-        <Typography variant="overline">Amount</Typography>
+        <Typography variant="overline" className={classes.priceTotal}>
+            <div className={classes.priceValue}>{getDisplayAmount(
+              getBasketPrice(ticketAmount),
+              paymentOption.mint
+            )} </div>
+            
+            <div>{raffle.proceeds.mint.symbol}</div>
+          </Typography>
+        <div
+          style={{
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Typography variant="h4">
+            
+          </Typography>
+        </div>
       </div>
       <div className={classes.ticketAmountSection}>
         <div className={classes.ticketAmountSectionLeft}>
@@ -315,7 +332,7 @@ export const PurchaseTickets: FC<PurchaseTicketsProps> = ({
             disabled={ticketAmount <= 1}
             className={classes.changeTicketAmountButton}
           >
-            <IndeterminateCheckBoxRounded style={{ fontSize: 30 }} />
+            <div className={classes.minusSign}>-</div>
           </IconButton>
         </div>
         <div className={classes.ticketAmountSectionMiddle}>
@@ -339,7 +356,8 @@ export const PurchaseTickets: FC<PurchaseTicketsProps> = ({
 
               setTicketAmount(numericValue);
             }}
-            InputProps={{
+            
+            InputProps={{/*
               endAdornment: (
                 <Button
                   size="small"
@@ -358,7 +376,7 @@ export const PurchaseTickets: FC<PurchaseTicketsProps> = ({
                 </Button>
               ),
               startAdornment: (
-                <Button
+                /*<Button
                   size="small"
                   variant="text"
                   disableRipple
@@ -367,7 +385,7 @@ export const PurchaseTickets: FC<PurchaseTicketsProps> = ({
                 >
                   MIN
                 </Button>
-              ),
+              ),*/
             }}
           />
         </div>
@@ -385,20 +403,21 @@ export const PurchaseTickets: FC<PurchaseTicketsProps> = ({
             }
             className={classes.changeTicketAmountButton}
           >
-            <AddBoxRounded style={{ fontSize: 30 }} />
+            <div className={classes.plusSign}>+</div>
           </IconButton>
         </div>
       </div>
-      <div className={classes.priceSection}>
+      {/*<div className={classes.priceSection}>
         <div className={classes.paymentOptionSection}>
           <div className={classes.basketPrice}>
             <Typography variant="overline">Total Price</Typography>
-            <div
+            <divq
               style={{
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <Typography variant="h4">
@@ -481,7 +500,7 @@ export const PurchaseTickets: FC<PurchaseTicketsProps> = ({
             )}
           </div>
         </div>
-      </div>
+      </div>*/}
       <div className={classes.buySection}>
         <Button
           variant="contained"
@@ -504,16 +523,16 @@ export const PurchaseTickets: FC<PurchaseTicketsProps> = ({
                   />
                 </div>
                 <div className={classes.purchaseButtonContentMiddle}>
-                  Processing...
+                  Buying...
                 </div>
                 <div className={classes.purchaseButtonContentRight} />
               </>
             ) : (
-              <>Buy ticket {!lamportsEnough && '(Insufficient SOL)'}</>
+              <>Buy ticket {!lamportsEnough && ''}</>
             )}
           </div>
         </Button>
-        <div className={classes.walletBalance}>
+        {/*<div className={classes.walletBalance}>
           Wallet balance:{' '}
           {buyerTokenBalance
             ? getDisplayAmount(
@@ -522,7 +541,7 @@ export const PurchaseTickets: FC<PurchaseTicketsProps> = ({
               )
             : 0}{' '}
           {paymentOption.mint.symbol}
-        </div>
+        </div>*/}
       </div>
     </div>
   );

@@ -18,6 +18,7 @@ import PrizeGalleryOngoing from './components/PrizeGalleryOngoing';
 import { useViewport } from '../../hooks/useViewport';
 import { DeviceType } from '../../providers/ViewportProvider';
 import Spacer from '../../components/Spacer';
+import CountUp from 'react-countup';
 
 interface IRaffleOngoingScreenProps {
   raffle: Raffle;
@@ -48,19 +49,35 @@ const RaffleOngoingScreen: FC<IRaffleOngoingScreenProps> = ({
     <div className={classes.root}>
       {device === DeviceType.Phone ? (
         <>
-          <Typography variant="h1">{`${raffle.metadata.name}`}</Typography>
+          {/*<Typography variant="h1">{`${raffle.metadata.name}`}</Typography>
           <div className={classes.countdown}>
             <Countdown endTimestamp={raffle.endTimestamp} spacing={'5%'} />
-          </div>
+          </div>*/}
+
           <RaffleInfoSection
             raffle={raffle}
             userConnected={!!draffleClient.provider.wallet.publicKey}
             userTickets={entrant?.tickets}
           />
+          {/*
           <div className={classes.spacer} />
           <Typography variant="overline">Prizes</Typography>
-          <PrizeGalleryOngoing raffle={raffle} scrollRef={prizeGalleryRef} />
+          <PrizeGalleryOngoing raffle={raffle} scrollRef={prizeGalleryRef} />*/}
           <div className={classes.spacer} />
+          <Typography variant="overline" className={classes.yourTickets}>
+                <span className={classes.myTicketsTitle}>MY TICKETS</span>
+              <CountUp
+                start={0}
+                end={entrant?.tickets.length ?? 0}
+                delay={0}
+                duration={0.8}
+                preserveValue
+                useEasing>
+                {({ countUpRef }) => (
+                  <Typography variant="h4" ref={countUpRef} className={classes.myTicketsVal}/>
+                )}
+              </CountUp>
+            </Typography>
           {draffleClient.provider.wallet.publicKey ? (
             <PurchaseTickets raffle={raffle} updateRaffle={updateRaffle} />
           ) : (
@@ -70,28 +87,30 @@ const RaffleOngoingScreen: FC<IRaffleOngoingScreenProps> = ({
         </>
       ) : (
         <>
-          <div className={classes.topSection}>
-            <div className={classes.raffleTitle}>
-              <div className={classes.leftTitleSection}>
-                <IconButton
-                  size="medium"
-                  className={classes.backButton}
-                  onClick={() => push(routes.RAFFLES)}
-                >
-                  <ArrowBack />
-                </IconButton>
-              </div>
-              <div className={classes.middleTitleSection}>
-                <Typography variant="h1">{`${raffle.metadata.name}`}</Typography>
-              </div>
-              <div className={classes.rightTitleSection}></div>
-            </div>
-            <div className={classes.countdown}>
-              <Countdown endTimestamp={raffle.endTimestamp} spacing={'5%'} />
-            </div>
-          </div>
+          
           <div className={classes.mainContent}>
+            {/*<div className={classes.topSection}>
+              <div className={classes.raffleTitle}>
+                <div className={classes.leftTitleSection}>
+                  <IconButton
+                    size="medium"
+                    className={classes.backButton}
+                    onClick={() => push(routes.RAFFLES)}
+                  >
+                    <ArrowBack />
+                  </IconButton>
+                </div>
+              </div>
+            </div>*/}
+
+
             <div className={classes.prizesSection}>
+              <RaffleInfoSection
+                raffle={raffle}
+                userConnected={!!draffleClient.provider.wallet.publicKey}
+                userTickets={entrant?.tickets}
+              />
+              {/*
               <Typography variant="overline" className={classes.prizesHeader}>
                 
                 {raffle.prizes.length > 3 && (
@@ -113,24 +132,34 @@ const RaffleOngoingScreen: FC<IRaffleOngoingScreenProps> = ({
                   </>
                 )}
               </Typography>
-              <PrizeShowcaseOngoing prizes={raffle.prizes} />
+              <PrizeShowcaseOngoing prizes={raffle.prizes} />*/}
             </div>
-            <div className={classes.detailsSection}>
-              <RaffleInfoSection
-                raffle={raffle}
-                userConnected={!!draffleClient.provider.wallet.publicKey}
-                userTickets={entrant?.tickets}
-              />
-              <div className={classes.actionSectionContainer}>
-                {draffleClient.provider.wallet.publicKey ? (
-                  <PurchaseTickets
-                    raffle={raffle}
-                    updateRaffle={updateRaffle}
-                  />
-                ) : (
-                  <ConnectActionSection />
+
+            <div className={classes.actionSectionContainer}>
+
+            <Typography variant="overline" className={classes.yourTickets}>
+                <span className={classes.myTicketsTitle}>MY TICKETS</span>
+              <CountUp
+                start={0}
+                end={entrant?.tickets.length ?? 0}
+                delay={0}
+                duration={0.8}
+                preserveValue
+                useEasing>
+                {({ countUpRef }) => (
+                  <Typography variant="h4" ref={countUpRef} className={classes.myTicketsVal}/>
                 )}
-              </div>
+              </CountUp>
+            </Typography>
+
+              {draffleClient.provider.wallet.publicKey ? (
+                <PurchaseTickets
+                  raffle={raffle}
+                  updateRaffle={updateRaffle}
+                />
+              ) : (
+                <ConnectActionSection />
+              )}
             </div>
           </div>
           {raffle.prizes.length > 3 && (
@@ -156,17 +185,17 @@ const ConnectActionSection: FC = () => {
     <div className={classes.actionSection}>
       <div className={classes.actionSectionInner}>
         <div className={classes.actionTagline}>
+
+
           <Typography variant="h3" className={classes.textHighlight}>
             Tickets are still available.
           </Typography>
           <Typography variant="body1">Don't miss out!</Typography>
         </div>
         <WalletMultiButton
-          variant="outlined"
-          color="secondary"
           className={`${classes.mainButton} ${classes.connectToBuyButton}`}
         >
-          Connect to buy
+          CONNECT
         </WalletMultiButton>
       </div>
     </div>

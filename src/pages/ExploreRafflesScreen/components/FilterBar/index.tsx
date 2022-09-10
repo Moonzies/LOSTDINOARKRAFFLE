@@ -1,3 +1,6 @@
+import {
+  Typography,
+} from '@material-ui/core';
 import { FC } from 'react';
 import { Button, Checkbox } from '@material-ui/core';
 import SwitchSelector from 'react-switch-selector';
@@ -7,6 +10,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { useStyles } from './styles';
 import { useViewport } from '../../../../hooks/useViewport';
 import { DeviceType } from '../../../../providers/ViewportProvider';
+
 
 interface FilterBarProps {
   hideEndedRaffles: boolean;
@@ -43,22 +47,24 @@ const FilterBar: FC<FilterBarProps> = ({
     return (
       <div className={classes.filterBar}>
         <div className={classes.leftPhoneSection}>
-          {connected && (
+          {/*connected && (
             <div className={classes.ownRafflesSwitchContainer}>
-              <SwitchSelector
-                onChange={onOwnRafflesSwitchChange}
-                options={options}
-                optionBorderRadius={0}
-                wrapperBorderRadius={0}
-                fontSize={12}
-                initialSelectedIndex={0}
-                selectionIndicatorMargin={0}
-                selectedBackgroundColor={theme.palette.primary.main}
-                backgroundColor={'transparent'}
-                fontColor={'white'}
-              />
+              <Typography variant="overline">
+                <SwitchSelector
+                  onChange={onOwnRafflesSwitchChange}
+                  options={options}
+                  optionBorderRadius={0}
+                  wrapperBorderRadius={0}
+                  fontSize={12}
+                  initialSelectedIndex={0}
+                  selectionIndicatorMargin={0}
+                  selectedBackgroundColor={"white"}
+                  backgroundColor={'transparent'}
+                  fontColor={'white'}
+                />
+              </Typography>
             </div>
-          )}
+          )*/}
         </div>
         <div className={classes.rightPhoneSection}>
           <div className={classes.showEndedRaffles}>
@@ -70,16 +76,6 @@ const FilterBar: FC<FilterBarProps> = ({
                 setHideEndedRaffles((currentValue) => !currentValue)
               }
             />
-            <Button
-              variant="text"
-              disableRipple
-              className={classes.hideEndedText}
-              onClick={() =>
-                setHideEndedRaffles((currentValue) => !currentValue)
-              }
-            >
-              Hide ended raffles
-            </Button>
           </div>
         </div>
       </div>
@@ -99,7 +95,7 @@ const FilterBar: FC<FilterBarProps> = ({
               fontSize={12}
               initialSelectedIndex={0}
               selectionIndicatorMargin={0}
-              selectedBackgroundColor={theme.palette.secondary.main}
+              selectedBackgroundColor={"#EABE5794"}
               backgroundColor={'transparent'}
               fontColor={'white'}
             />

@@ -33,37 +33,7 @@ const Header: FC<HeaderProps> = ({ onBackNavigation }) => {
 
   return (
     <div className={classes.root}>
-      <div
-        style={{
-          width: '100%',
-          height: device === DeviceType.Phone ? '50px' : '90px',
-          zIndex: 98,
-        }}
-      />
-      <AppBar className={classes.appBar} elevation={0}>
-        {device === DeviceType.Phone ? (
-          <div className={classes.drawerHeader}>
-            {onBackNavigation ? (
-              <IconButton size={'medium'} onClick={() => onBackNavigation()}>
-                <ChevronLeft />
-              </IconButton>
-            ) : (
-              <IconButton size={'medium'} onClick={() => push(routes.HOME)}>
-                <Home />
-              </IconButton>
-            )}
-            <IconButton size={'medium'} onClick={() => setIsDrawerOpen(true)}>
-              <MenuIcon />
-            </IconButton>
-            <Drawer
-              wallet={publicKey}
-              isOpen={isDrawerOpen}
-              setIsOpen={setIsDrawerOpen}
-              navLinksList={NAV_LINKS_LIST}
-            />
-          </div>
-        ) : (
-          <>
+      <>
             <div>
               <IconButton
                 onClick={() => push(routes.RAFFLES)}
@@ -94,8 +64,6 @@ const Header: FC<HeaderProps> = ({ onBackNavigation }) => {
               </div>
             </div>
           </>
-        )}
-      </AppBar>
     </div>
   );
 };
